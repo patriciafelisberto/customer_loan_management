@@ -8,6 +8,14 @@ class PaymentSerializer(serializers.ModelSerializer):
         model = Payment
         fields = ['id', 'loan', 'payment_date', 'amount']
 
+    def validate_amount(self, value):
+        """
+        Valida se o valor do pagamento é positivo.
+        """
+        if value <= 0:
+            raise serializers.ValidationError("The payment amount must be positive.")
+        return value 
+
 
 class LoanSerializer(serializers.ModelSerializer):
     payments = PaymentSerializer(many=True, read_only=True)
@@ -15,5 +23,11 @@ class LoanSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Loan
-        fields = ['id', 'nominal_value', 'interest_rate', 'ip_address', 'request_date', 'bank', 'client', 'outstanding_balance', 'payments']
-        read_only_fields = ['id', 'request_date', 'outstanding_balance', 'payments', 'ip_address']
+        fields = ['id', 'nominal_value', 'interest_rate', 'ip_address', 'request_date', 'bank', 'client', 'outstanding_balance', 'payments', 'user']
+        read_only_fields = ['id', 'request_date', 'outstanding_balance', 'payments', 'ip_address', 'user']
+
+    def validate(self, attrs):
+        user = self.context['request'].user
+        if not user.is_superuser:
+            attrs['user'] = user
+        return attrs
