@@ -1,0 +1,134 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "john_doe",
+      "password": "pbkdf2_sha256$150000$randomhash$somedifferenthash",
+      "is_superuser": false,
+      "is_staff": true,
+      "is_active": true,
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@example.com"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "username": "jane_smith",
+      "password": "pbkdf2_sha256$150000$anotherhash$differenthash",
+      "is_superuser": false,
+      "is_staff": true,
+      "is_active": true,
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "email": "jane.smith@example.com"
+    }
+  },
+  {
+    "model": "loans.loan",
+    "pk": "e843dc04-eda2-45c7-a9ea-4573799fbf0c",
+    "fields": {
+      "nominal_value": "8000.00",
+      "interest_rate": "4.50",
+      "ip_address": "127.0.0.1",
+      "request_date": "2024-09-22",
+      "bank": "Bank XYZ",
+      "client": "John Doe",
+      "user": 1,
+      "created_at": "2024-09-21T12:00:00Z",
+      "updated_at": "2024-09-21T12:00:00Z"
+    }
+  },
+  {
+    "model": "loans.payment",
+    "pk": "03e9d4de-674a-4d1b-9440-b04f2b1f54a5",
+    "fields": {
+      "loan": "e843dc04-eda2-45c7-a9ea-4573799fbf0c",
+      "payment_date": "2024-09-25",
+      "amount": "200.00",
+      "created_at": "2024-09-25T12:00:00Z",
+      "updated_at": "2024-09-25T12:00:00Z"
+    }
+  },
+  {
+    "model": "loans.loan",
+    "pk": "a3e1cfc7-3f15-4b08-b12f-d93839f4f24d",
+    "fields": {
+      "nominal_value": "5000.00",
+      "interest_rate": "3.25",
+      "ip_address": "127.0.0.1",
+      "request_date": "2024-09-21",
+      "bank": "Bank ABC",
+      "client": "Jane Smith",
+      "user": 2,
+      "created_at": "2024-09-20T12:00:00Z",
+      "updated_at": "2024-09-20T12:00:00Z"
+    }
+  },
+  {
+    "model": "loans.payment",
+    "pk": "6db1df24-04ff-44e5-a9fc-b784c7c3df33",
+    "fields": {
+      "loan": "a3e1cfc7-3f15-4b08-b12f-d93839f4f24d",
+      "payment_date": "2024-09-24",
+      "amount": "300.00",
+      "created_at": "2024-09-24T12:00:00Z",
+      "updated_at": "2024-09-24T12:00:00Z"
+    }
+  },
+  {
+    "model": "loans.loan",
+    "pk": "46b63d64-fc0e-4925-94b2-3dcb35ad0c69",
+    "fields": {
+      "nominal_value": "12000.00",
+      "interest_rate": "6.00",
+      "ip_address": "127.0.0.2",
+      "request_date": "2024-09-20",
+      "bank": "Bank DEF",
+      "client": "Michael Lee",
+      "user": 1,
+      "created_at": "2024-09-19T12:00:00Z",
+      "updated_at": "2024-09-19T12:00:00Z"
+    }
+  },
+  {
+    "model": "loans.payment",
+    "pk": "dce8db07-38f0-40c6-b2ff-60497fa8b90d",
+    "fields": {
+      "loan": "46b63d64-fc0e-4925-94b2-3dcb35ad0c69",
+      "payment_date": "2024-09-25",
+      "amount": "400.00",
+      "created_at": "2024-09-25T12:00:00Z",
+      "updated_at": "2024-09-25T12:00:00Z"
+    }
+  },
+  {
+    "model": "loans.loan",
+    "pk": "73be5646-7b79-42ae-a6e4-2be80b0ef8b9",
+    "fields": {
+      "nominal_value": "3000.00",
+      "interest_rate": "2.00",
+      "ip_address": "127.0.0.3",
+      "request_date": "2024-09-19",
+      "bank": "Bank GHI",
+      "client": "Alice Johnson",
+      "user": 2,
+      "created_at": "2024-09-18T12:00:00Z",
+      "updated_at": "2024-09-18T12:00:00Z"
+    }
+  },
+  {
+    "model": "loans.payment",
+    "pk": "3f4f348d-d7fc-4df7-84bc-1e7c3cc63e6b",
+    "fields": {
+      "loan": "73be5646-7b79-42ae-a6e4-2be80b0ef8b9",
+      "payment_date": "2024-09-23",
+      "amount": "150.00",
+      "created_at": "2024-09-23T12:00:00Z",
+      "updated_at": "2024-09-23T12:00:00Z"
+    }
+  }
+]
