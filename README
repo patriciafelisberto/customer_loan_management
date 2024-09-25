@@ -1,0 +1,66 @@
+# Loan Management API
+
+## Descrição
+
+API REST desenvolvida com Django e Django REST Framework para gerenciamento de empréstimos e pagamentos. A aplicação permite que os usuários insiram, visualizem e gerenciem seus empréstimos e pagamentos, além de calcular automaticamente o saldo devedor com base nos pagamentos realizados e na taxa de juros. A autenticação é realizada via token JWT.
+
+## Tecnologias Utilizadas
+
+- **Django** e **Django REST Framework**
+- **PostgreSQL** (via Docker)
+- **Docker** e **Docker Compose**
+- **Autenticação via Token JWT**
+
+## Funcionalidades
+
+- **Gerenciamento de Empréstimos**: Criação e visualização de empréstimos com dados como valor nominal, taxa de juros, e saldo devedor.
+- **Gerenciamento de Pagamentos**: Criação de pagamentos associados a empréstimos.
+- **Autenticação JWT**: Garantia de que usuários só podem gerenciar seus próprios empréstimos e pagamentos.
+- **Soft Delete**: Registros não são deletados permanentemente, mas marcados como removidos.
+
+## Instruções para Configuração
+
+### 1. Clonar o Repositório
+
+```bash
+git clone https://github.com/patriciafelisberto/customer_loan_management.git
+cd loan-management-api
+```
+
+### 2. Configurar e Iniciar com Docker
+
+```
+docker-compose up --build
+```
+
+### 3. Aplicar Migrações e Criar Superusuário
+
+```
+docker-compose exec web python manage.py makemigrations
+```
+```
+docker-compose exec web python manage.py migrate
+```
+```
+docker-compose exec web python manage.py createsuperuser
+```
+
+### 4. Carregamento das fixtures para popular o banco de dados
+
+```
+docker-compose exec web python manage.py loaddata loans_fixture.json
+```
+
+### 5. Acessar a API
+
+- A API estará disponível em http://localhost:8000/.
+
+### 6. Executando Testes
+
+```
+docker-compose exec web pytest
+```
+
+### 7. Insomnia Collection
+
+- Para testar a API via Insomnia acesse a pasta insomnia_collection e import o arquivo json no seu Insomnia.
