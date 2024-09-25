@@ -1,6 +1,6 @@
 import uuid
-from decimal import Decimal
 from datetime import date
+from decimal import Decimal
 
 from django.db import models
 from django.utils import timezone
@@ -144,6 +144,7 @@ class Payment(BaseModel):
         payment_date: A data em que o pagamento foi realizado (preenchido automaticamente).
         amount: O valor do pagamento.
     """
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     loan = models.ForeignKey(Loan, on_delete=models.CASCADE, related_name='payments')
     payment_date = models.DateField(auto_now_add=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
